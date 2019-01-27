@@ -26,7 +26,7 @@ export default class SearchComponent extends Component{
 			<div className="col-lg-12 assSearch ">
 				<div className="pull-right ">
 					<input type="text" name="search" id="getValue" ref="getValue" placeholder="Search.."/>&nbsp;&nbsp;
-					<button type="button" className="btn btn-primary" onClick={this.getSearchValue}>Serach</button>&nbsp;&nbsp;
+					<button type="button" className="btn btn-primary" onClick={this.getSearchValue}>Search</button>&nbsp;&nbsp;
 					<button type="button" className="btn btn-default" onClick={this.resetTable}>Reset</button>
 				</div>
 			</div>
