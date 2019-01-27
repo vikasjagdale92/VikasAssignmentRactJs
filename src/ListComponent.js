@@ -2,12 +2,15 @@ import React,{Component} from 'react';
 import 	SearchComponent from './SearchComponent.js';
 import data from './data.json';
 
+import Loader from 'react-loader-advanced';
+
+
 export default class ListComponent extends Component{
 	constructor(props){
 		super(props);
 		this.state={
 			InformationArr : [],
-
+			flag           :false
 		}
 	}
 
@@ -20,12 +23,22 @@ export default class ListComponent extends Component{
 
 	getSearchValue(searchVal){
 		if(searchVal){
+			this.setState({
+				flag  : true
+			});
 			var searchResult = this.state.InformationArr.filter((values,index)=>{
 				return values.name ===searchVal || values.gender ===searchVal || values.index===searchVal;
 			})
-			this.setState({
-				InformationArr : searchResult,
-			});
+			if(searchResult){
+				this.setState({
+					InformationArr : searchResult,
+					flag           : false
+				});
+			}else{
+				this.setState({
+					flag           : false
+				});
+			}
 		}else{
 			alert("Please enter any text");
 		}
@@ -44,14 +57,8 @@ export default class ListComponent extends Component{
 	render(){
 		return(
 			<div className="col-lg-12">
-			    <SearchComponent getAttribute={this.getSearchValue.bind(this)} resetTable={this.restFun}/>
-			    <div id="loader-wrapper">
-				    <div id="loader"></div>
-				 
-				    <div className="loader-section section-left"></div>
-				    <div className="loader-section section-right"></div>
-				 
-				</div>
+			    <SearchComponent getAttribute={this.getSearchValue.bind(this)} resetTable={this.restFun}/><br/>
+			    <Loader show={this.state.flag} message={'fetching Results'}>
 				<table className="table table-striped table-hover myTable table-bordered">
 				    <thead>
 				      <tr className="tableHeader">
@@ -60,6 +67,7 @@ export default class ListComponent extends Component{
 				        <th>Gender</th>
 				      </tr>
 				    </thead>
+				    
 				    {this.state.InformationArr.length>0 ?
 					    <tbody>
 						    {this.state.InformationArr.map((values,index)=>{
@@ -70,14 +78,18 @@ export default class ListComponent extends Component{
 									      </tr>
 						    })} 
 				    	</tbody>
+				   
 				    :
+
 					    <tbody>
 					    	<tr>
 					    		<td colSpan="3" className="noData">Sorry No Matches Found</td>
 					    	</tr>
 					    </tbody>
 					}
+
 				  </table>
+				  </Loader>
 			</div>
 			);
 	

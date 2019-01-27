@@ -18,16 +18,19 @@ export default class SearchComponent extends Component{
 	}
 
 	resetTable=(e)=>{
+		this.refs.getValue.value = '';
 		this.props.resetTable("reset");
 	}
 	
 	render(){
 		return(
-			<div className="col-lg-12 assSearch ">
-				<div className="pull-right ">
-					<input type="text" name="search" id="getValue" ref="getValue" placeholder="Search.."/>&nbsp;&nbsp;
-					<button type="button" className="btn btn-primary" onClick={this.getSearchValue}>Search</button>&nbsp;&nbsp;
-					<button type="button" className="btn btn-default" onClick={this.resetTable}>Reset</button>
+			<div className="col-lg-12 col-md-12col-xs-12 col-sm-12 assSearch ">
+				
+				<div className="btn-group">
+				  <input id="getValue" name="search" id="getValue" ref="getValue" placeholder="Search.."className="form-control" />
+				  <span id="searchRec" className="glyphicon glyphicon-search"onClick={this.getSearchValue} title="Click to search records"></span>
+
+				  <span id="searchclear" className="glyphicon glyphicon-remove-circle" onClick={this.resetTable} title="Click to reset "></span>
 				</div>
 			</div>
 			);
