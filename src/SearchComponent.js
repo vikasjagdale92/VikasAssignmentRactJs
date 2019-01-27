@@ -1,5 +1,4 @@
 import React,{Component} from 'react';
-
 export default class SearchComponent extends Component{
 	constructor(props){
 		super(props);
@@ -13,8 +12,7 @@ export default class SearchComponent extends Component{
 		var value = this.refs.getValue.value;
 		this.setState({
 			serchValue : value,
-		})
-		// console.log(this.state.serchValue);
+		});
 
 		this.props.getAttribute(value);
 	}

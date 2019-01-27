@@ -23,10 +23,9 @@ export default class ListComponent extends Component{
 			var searchResult = this.state.InformationArr.filter((values,index)=>{
 				return values.name ===searchVal || values.gender ===searchVal || values.index===searchVal;
 			})
-
 			this.setState({
 				InformationArr : searchResult,
-			})
+			});
 		}else{
 			alert("Please enter any text");
 		}
@@ -74,7 +73,7 @@ export default class ListComponent extends Component{
 				    :
 					    <tbody>
 					    	<tr>
-					    		<td colSpan="3" className="noData">Nothing to display</td>
+					    		<td colSpan="3" className="noData">Sorry No Matches Found</td>
 					    	</tr>
 					    </tbody>
 					}
