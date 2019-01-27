@@ -1,28 +1,16 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
+import React,{Component} from 'react';
+import ListComponent from './ListComponent.js';
 import './App.css';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+export default class AppComponent extends Component{
+  render(){
+    return(
+      <div className="col-lg-8 col-lg-offset-2 col-md-12 col-md-offset-2">
+      	<div className="col-lg-12 headingText">
+      		<h3>Search Record According to Name, Gender and index(id)</h3>
+      	</div>
+        <ListComponent/>
       </div>
-    );
+      );
   }
 }
-
-export default App;
