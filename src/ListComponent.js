@@ -19,15 +19,17 @@ export default class ListComponent extends Component{
 
 
 	getSearchValue(searchVal){
-		
-		var searchResult = this.state.InformationArr.filter((values,index)=>{
-			return values.name ===searchVal || values.gender ===searchVal || values.index===searchVal;
-		})
+		if(searchVal){
+			var searchResult = this.state.InformationArr.filter((values,index)=>{
+				return values.name ===searchVal || values.gender ===searchVal || values.index===searchVal;
+			})
 
-		this.setState({
-			InformationArr : searchResult,
-		})
-		
+			this.setState({
+				InformationArr : searchResult,
+			})
+		}else{
+			alert("Please enter any text");
+		}
 		
 
 	}
