@@ -1,19 +1,19 @@
-import React,{Component} from 'react';
-import ListComponent from './ListComponent.js';
-// import Loader from 'react-loader-advanced';
-
+import React,{ Component } from 'react';
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import EmployeeForm from './components/EmployeeForm';
+import EmployeeList from './components/EmployeeList';
+import ShowData from './components/ShowData';
 import './App.css';
 
-export default class AppComponent extends Component{
+class App extends Component{
   render(){
-
     return(
-      <div className="col-lg-8 col-lg-offset-2 col-md-12 col-md-offset-2">
-      	<div className="col-lg-12 headingText">
-      		<h3>Search Record According to Name, Gender and index(id)</h3>
-      	</div>
-		  <ListComponent/>
-      </div>
+      <Router>
+        <Route exact path = "/" component = {EmployeeForm}></Route>
+        <Route path = "/form-list" component = {EmployeeList}></Route>
+        <Route path = "/data-grid" component = {ShowData}></Route>
+      </Router>
       );
   }
 }
+export default App;
